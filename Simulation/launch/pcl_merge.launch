@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="pointcloud_merger" type="pointcloud_merger_node" name="pointcloud_merger_node" launch-prefix="xterm -e gdb --args">
+
+        <remap from="cloud_out" to="/camera/depth/pcl_combined"/>
+        <remap from="cloud1" to="/camera/depth/lane_only_pcl"/>
+        <remap from="cloud2" to="/camera/depth/obs_only_pcl"/>
+        <rosparam>
+            target_frame: base_link
+            # Concurrency level, affects number of pointclouds queued for processing, thread number governed by nodelet manager
+            concurrency_level: 0
+        </rosparam>
+
+    </node>
+
+</launch>

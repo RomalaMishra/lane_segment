@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <include file="$(find astra_camera)/launch/astra_pro.launch"/>
+
+    <!-- Activate the lane detection pipeline -->
+
+    <include file="$(find depth_image_proc)/launch/node_exe_igv.launch"/>  <!-- Ros Nodelet to produce Point Cloud-->
+    <node name="lane_filterer" pkg="igvc_perception" type="point_cloud_filter"/> <!-- RosNode to filter out the black points-->
+
+</launch>
